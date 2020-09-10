@@ -69,10 +69,10 @@ function Baby() {}
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. If called in global scope "this" referrs to the window object.
+  2. "this" is explicitly defined if using a call or apply method.
+  3. If preceded with a dot then whatever directly precedes the "this" is referred to.
+  4. "this" turns the function it resides in into a constuctor function by running the fuction it is in.
 */
 
 ///////// END OF CHALLENGE /////////
