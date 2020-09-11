@@ -38,9 +38,9 @@
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+function Person(attrs) {
+  this.name = attrs.name;
+  this.age = attrs.age;
   this.stomach = [];
 }
 
@@ -58,7 +58,7 @@ Person.prototype.poop = function () {
   this.stomach = [];
 };
 
-const person1 = new Person("Mary", 50);
+const person1 = new Person({ name: "Mary", age: 50 });
 
 console.log(person1.toString());
 
@@ -95,7 +95,23 @@ console.log(person1.stomach);
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-//function Baby() {}
+
+function Baby(attrs) {
+  Person.call(this, attrs);
+  this.toy = attrs.toy;
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function (toy) {
+  return `Playing with ${this.toy}`;
+};
+
+const person2 = new Baby({ name: "Samson", age: 3, toy: "tricycle" });
+
+console.log(person2.toString());
+
+console.log(person2.play());
 
 /* 
   TASK 4
