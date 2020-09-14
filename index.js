@@ -66,11 +66,13 @@ person1.eat("Spaghetti");
 
 person1.eat("Ice Cream");
 
-console.log(person1.stomach);
+console.log(`The stomach of ${person1.name} has "${person1.stomach}" in it`);
+
+console.log(`${person1.name} has went to the restroom`);
 
 person1.poop();
 
-console.log(person1.stomach);
+console.log(`The stomach of ${person1.name} has "${person1.stomach}" in it`);
 
 /*
   TASK 2
@@ -86,7 +88,26 @@ console.log(person1.stomach);
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-//function Car() {}
+function Car(attrs) {
+  this.model = attrs.model;
+  this.milesPerGallon = attrs.milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+
+Car.prototype.fuel = function (gallons) {
+  this.tank = this.tank + gallons;
+};
+
+const car1 = new Car({ model: "Monster Truck", milesPerGallon: 3.65 });
+
+console.log(`The gas tank of ${car1.model} has "${car1.tank}" gallons in it`);
+
+car1.fuel(2);
+
+console.log(`${car1.name} has been fueled`);
+
+console.log(`The gas tank of ${car1.model} has "${car1.tank}" gallons in it`);
 
 /*
   TASK 3
@@ -104,14 +125,12 @@ function Baby(attrs) {
 Baby.prototype = Object.create(Person.prototype);
 
 Baby.prototype.play = function (toy) {
-  return `Playing with ${this.toy}`;
+  return `playing with a ${this.toy}.`;
 };
 
 const person2 = new Baby({ name: "Samson", age: 3, toy: "tricycle" });
 
-console.log(person2.toString());
-
-console.log(person2.play());
+console.log(`${person2.toString()}, is ${person2.play()}`);
 
 /* 
   TASK 4
@@ -126,18 +145,19 @@ console.log(person2.play());
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
-// if (typeof exports !== "undefined") {
-//   module.exports = module.exports || {};
-//   if (Airplane) {
-//     module.exports.Airplane = Airplane;
-//   }
-//   if (Person) {
-//     module.exports.Person = Person;
-//   }
-//   if (Car) {
-//     module.exports.Car = Car;
-//   }
-//   if (Baby) {
-//     module.exports.Baby = Baby;
-//   }
-// }
+
+if (typeof exports !== "undefined") {
+  module.exports = module.exports || {};
+  if (Airplane) {
+    module.exports.Airplane = Airplane;
+  }
+  if (Person) {
+    module.exports.Person = Person;
+  }
+  if (Car) {
+    module.exports.Car = Car;
+  }
+  if (Baby) {
+    module.exports.Baby = Baby;
+  }
+}
